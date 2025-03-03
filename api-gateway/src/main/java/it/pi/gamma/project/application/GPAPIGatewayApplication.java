@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.servers.Server;
 
 @SpringBootApplication
-@OpenAPIDefinition(servers = {@Server(url = "${server.servlet.contextPath}", description = "Default Server URL")})
+@OpenAPIDefinition(servers = {@Server(url = "${server.servlet.contextPath}", description = "Server URL")})
 @ComponentScan(basePackages = "it.pi.gamma.project")
 public class GPAPIGatewayApplication {
 	public static void main(String[] args) {
