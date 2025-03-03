@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @ControllerAdvice
 public class GPAdvice {
 
-	@Value("${web.filter.cashier.application-code:876}")
+	@Value("${application.application-code:876}")
 	private String applicationCode;
 	
     @ExceptionHandler(APIException.class)

@@ -6,5 +6,7 @@
   <packaging>pom</packaging>
   <modules>
   	<module>api-gateway</module>
+  	<module>authorization-api</module>
+  	<module>gp-common</module>
   </modules>
 </project>

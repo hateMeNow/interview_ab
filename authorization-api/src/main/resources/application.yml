@@ -1,0 +1,10 @@
+application:
+  version: 0.0.1-SNAPSHOT
+  date: 03.03.2025
+  application-code: 2187
+  
+server:
+  servlet:
+    contextPath: /auth-api
+
+  

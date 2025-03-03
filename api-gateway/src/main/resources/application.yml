@@ -1,7 +1,16 @@
 application:
   version: 0.0.1-SNAPSHOT
   date: 03.03.2025
+  application-code: 1856
   
 server:
   servlet:
     contextPath: /gamma-project
+    
+gamma:
+  platform:
+    authentication-url:
+    message-url:
+    sign-url:
+    login-url:
+  

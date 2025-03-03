@@ -22,13 +22,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@Tag(name = "Gamma Project Gateway API")
-@RequestMapping("/api-gateway/v1")
-public class APIGatewayController extends AGPController{
+@Tag(name = "Gamma Project Authentication API")
+@RequestMapping("/auth-api/v1")
+public class AuthApiController extends AGPController{
 
-	
-	
-	@Operation(summary = "Login phase", description = "Returns the redirect URL for identity provider")
+	@Operation(summary = "Login phase", description = "Check customer login")
 	@ApiResponses(value = { 
 	  @ApiResponse(responseCode = "200", description = "redirect to Identity provider", 
 	    content = { @Content(mediaType = "application/json", 
@@ -45,7 +43,7 @@ public class APIGatewayController extends AGPController{
 		return null;
 	}
 
-	@Operation(summary = "Operation phase", description = "Operation for Gamma Platform ")
+	@Operation(summary = "Integration phase", description = "Operation for Gamma Platform ")
 	@ApiResponses(value = { 
 	  @ApiResponse(responseCode = "200", description = "Operation success completed", 
 	    content = { @Content(mediaType = "application/json", 
@@ -53,10 +51,10 @@ public class APIGatewayController extends AGPController{
 	  @ApiResponse(responseCode = "400", description = "Invalid", 
 	    content = @Content(mediaType = "application/json", 
 	    schema = @Schema(implementation = GPResponse.class)))})
-	@PostMapping("/operation")
-	public void operation(@RequestBody GPOperation operation) {
+	@PostMapping("/integration")
+	public void integration(@RequestBody GPOperation operation) {
 		operation.setUuid(getUuid());
-		log.info("[INFO] Entering method: operation. Params [operation: "+operation+"]. Start at: "+Utils.getCurrentTimeStamp());
+		log.info("[INFO] Entering method: integration. Params [operation: "+operation+"]. Start at: "+Utils.getCurrentTimeStamp());
 		
 		log.info("[INFO] method operation uuid: "+operation.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());
 	}

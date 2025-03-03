@@ -23,6 +23,7 @@ Personal interview
 ##################
 
 	API-GATEWAY: /gamma-project/swagger-ui/index.html
+	AUTH-API:    /auth-api/swagger-ui/index.html
 
 ##################
 #
@@ -53,6 +54,8 @@ Personal interview
 ► Update App-Diagram and mongoDB
 ► Add DB ER 
 ► first commit for API-GATEWAY
+► first commit for authentication-api
+► first commit for gamma-project common 
 
 02/03/2025
 ► Add prototype for sequence diagram

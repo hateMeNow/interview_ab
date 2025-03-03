@@ -1,4 +1,4 @@
-package it.pi.gamma.project.v1.controller;
+package it.pi.gamma.project.cotroller;
 
 import it.pi.gamma.project.util.Utils;
 
