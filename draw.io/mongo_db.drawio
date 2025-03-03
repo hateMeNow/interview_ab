@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.16">
+  <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
+    <mxGraphModel dx="1434" dy="738" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="6cqcHI1zi5TexpXEIPox-1" value="&lt;b&gt;TENANT&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="120" width="150" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="6cqcHI1zi5TexpXEIPox-2" value="+id_tenant ( int32)&lt;br&gt;+name(String)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="6cqcHI1zi5TexpXEIPox-1">
+          <mxGeometry y="50" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6cqcHI1zi5TexpXEIPox-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERmany;startFill=0;endArrow=ERmany;endFill=0;" edge="1" parent="1" source="6cqcHI1zi5TexpXEIPox-4" target="6cqcHI1zi5TexpXEIPox-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6cqcHI1zi5TexpXEIPox-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;endFill=0;" edge="1" parent="1" source="6cqcHI1zi5TexpXEIPox-4" target="6cqcHI1zi5TexpXEIPox-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6cqcHI1zi5TexpXEIPox-4" value="&lt;b&gt;USER&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="110" width="140" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="6cqcHI1zi5TexpXEIPox-5" value="+user_id (int32)&lt;br&gt;+tenant_id (int32)&lt;div&gt;+email(String)&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="6cqcHI1zi5TexpXEIPox-4">
+          <mxGeometry y="50" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6cqcHI1zi5TexpXEIPox-11" value="&lt;b&gt;MESSAGE&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="372.5" y="310" width="175" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="6cqcHI1zi5TexpXEIPox-12" value="+message_id (int32)&lt;br&gt;+user_id (int32)&lt;br&gt;+tenant_id (int32)&lt;div&gt;+text (String)&lt;/div&gt;&lt;div&gt;+object (String)&lt;/div&gt;&lt;div&gt;+to&amp;nbsp;&lt;/div&gt;&lt;div&gt;+CC (String)&lt;/div&gt;&lt;div&gt;+CCN ( String)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="6cqcHI1zi5TexpXEIPox-11">
+          <mxGeometry y="50" width="175" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="6cqcHI1zi5TexpXEIPox-14" value="&lt;b&gt;ATTACHMENT&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="378.75" y="610" width="162.5" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="6cqcHI1zi5TexpXEIPox-15" value="+message_id (int32)&lt;br&gt;+user_id (int32)&lt;br&gt;+tenant_id (int32)&lt;div&gt;+text (String)&lt;/div&gt;&lt;div&gt;+object (String)&lt;/div&gt;&lt;div&gt;+to&amp;nbsp;&lt;/div&gt;&lt;div&gt;+CC (String)&lt;/div&gt;&lt;div&gt;+CCN ( String)&lt;/div&gt;&lt;div&gt;+Sign(Int32)&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="6cqcHI1zi5TexpXEIPox-14">
+          <mxGeometry y="50" width="162.5" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="6cqcHI1zi5TexpXEIPox-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=ERmany;endFill=0;" edge="1" parent="1" source="6cqcHI1zi5TexpXEIPox-12" target="6cqcHI1zi5TexpXEIPox-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6cqcHI1zi5TexpXEIPox-18" value="&lt;b&gt;LOG&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="610" width="162.5" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="6cqcHI1zi5TexpXEIPox-19" value="+log_id(int32)&lt;br&gt;+ip (String)&lt;br&gt;+username (String)&lt;div&gt;+typeEvent (String)&lt;/div&gt;&lt;div&gt;+Description (String)&lt;/div&gt;&lt;div&gt;+message (String)&lt;/div&gt;&lt;div&gt;+date (Timestamp)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="6cqcHI1zi5TexpXEIPox-18">
+          <mxGeometry y="50" width="162.5" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

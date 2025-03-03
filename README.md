@@ -48,6 +48,9 @@ Personal interview
 #
 ##################
 
+03/03/2025
+► Add mongoDB ER schema 
+
 02/03/2025
 ► Add prototype for sequence diagram
 ► Add prototype for app diagram
