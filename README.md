@@ -22,7 +22,7 @@ Personal interview
 #
 ##################
 
-
+	API-GATEWAY: /gamma-project/swagger-ui/index.html
 
 ##################
 #
