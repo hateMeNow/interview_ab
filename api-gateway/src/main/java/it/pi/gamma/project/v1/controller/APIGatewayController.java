@@ -1,7 +1,6 @@
 package it.pi.gamma.project.v1.controller;
 
-import java.awt.print.Book;
-
+import org.apache.catalina.connector.Response;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +22,7 @@ public class APIGatewayController {
 	@ApiResponses(value = { 
 	  @ApiResponse(responseCode = "200", description = "redirect to Identity provider", 
 	    content = { @Content(mediaType = "application/json", 
-	      schema = @Schema(implementation = Book.class)) }),
+	      schema = @Schema(implementation = Response.class)) }),
 	  @ApiResponse(responseCode = "400", description = "Invalid id supplied", 
 	    content = @Content)})
 	@GetMapping("/login")
