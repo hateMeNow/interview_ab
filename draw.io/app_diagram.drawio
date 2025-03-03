@@ -53,7 +53,7 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="395" y="190" />
-              <mxPoint x="1110" y="190" />
+              <mxPoint x="1241" y="190" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -77,10 +77,8 @@
         <mxCell id="IEfos8bs7tHop2NpzzDZ-7" value="SIGN-API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="280" y="450.00000000000006" width="230" height="83.8" as="geometry" />
         </mxCell>
-        <mxCell id="f5035h7tQpbPwIKEuvAs-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="IEfos8bs7tHop2NpzzDZ-8" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1050" y="110" as="targetPoint" />
-          </mxGeometry>
+        <mxCell id="35JmLqdMYv9tIQoRzTlE-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="IEfos8bs7tHop2NpzzDZ-8" target="35JmLqdMYv9tIQoRzTlE-10">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="IEfos8bs7tHop2NpzzDZ-8" value="AUTH-API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="280" y="70" width="230" height="80" as="geometry" />
@@ -125,10 +123,10 @@
           <mxGeometry x="1030" y="40" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="f5035h7tQpbPwIKEuvAs-3" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.webicons.mongodb;gradientColor=#DFDEDE" parent="1" vertex="1">
-          <mxGeometry x="870" y="312" width="120" height="90" as="geometry" />
+          <mxGeometry x="880" y="200" width="120" height="90" as="geometry" />
         </mxCell>
         <mxCell id="f5035h7tQpbPwIKEuvAs-6" value="External&#xa;Infrastructure&#xa;1&lt;sup&gt;st&lt;/sup&gt; Party" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[1,1,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];rounded=1;absoluteArcSize=1;arcSize=2;html=1;strokeColor=none;gradientColor=none;shadow=0;dashed=0;fontSize=12;fontColor=#9E9E9E;align=left;verticalAlign=top;spacing=10;spacingTop=-4;whiteSpace=wrap;fillColor=#E1F5FE;" parent="1" vertex="1">
-          <mxGeometry x="1050" y="75" width="120" height="75" as="geometry" />
+          <mxGeometry x="1180" y="70" width="130" height="80" as="geometry" />
         </mxCell>
         <mxCell id="35JmLqdMYv9tIQoRzTlE-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.009;entryY=0.402;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="IEfos8bs7tHop2NpzzDZ-31" target="IEfos8bs7tHop2NpzzDZ-6">
           <mxGeometry relative="1" as="geometry" />
@@ -141,6 +139,12 @@
         </mxCell>
         <mxCell id="35JmLqdMYv9tIQoRzTlE-6" value="LOG-TOPIC" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;gradientColor=#ea6b66;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="615.35" y="585" width="130" height="71.9" as="geometry" />
+        </mxCell>
+        <mxCell id="35JmLqdMYv9tIQoRzTlE-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="IEfos8bs7tHop2NpzzDZ-8" target="f5035h7tQpbPwIKEuvAs-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="35JmLqdMYv9tIQoRzTlE-10" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="652" y="10" width="60" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

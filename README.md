@@ -50,7 +50,9 @@ Personal interview
 
 03/03/2025
 ► Add mongoDB ER schema 
-► Update App-Diagram
+► Update App-Diagram and mongoDB
+► Add DB ER 
+► first commit for API-GATEWAY
 
 02/03/2025
 ► Add prototype for sequence diagram
