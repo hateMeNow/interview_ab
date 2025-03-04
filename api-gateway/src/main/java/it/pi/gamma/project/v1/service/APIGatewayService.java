@@ -1,14 +1,10 @@
 package it.pi.gamma.project.v1.service;
 
-import java.io.IOException;
-
-import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-
+import it.pi.gamma.project.ds.strategy.context.GPContext;
 import it.pi.gamma.project.exception.APIException;
 import it.pi.gamma.project.exception.constant.api.IAPIException;
 import it.pi.gamma.project.model.GPOperation;
@@ -28,6 +24,9 @@ public class APIGatewayService implements IService{
 	
 	@Autowired
 	private RestUtil restUtil;
+	
+	@Autowired
+	private GPContext gpContext;
 
 	public GPResponse<Object> login(Login operation) throws APIException{
 		
@@ -45,4 +44,21 @@ public class APIGatewayService implements IService{
 		return output;
 	}
 	
+	
+	public GPResponse<Object> operation(GPOperation operation) throws APIException{
+		
+		log.info("[INFO] Entering method: login. Params [operation: "+operation+"]. Start at: "+Utils.getCurrentTimeStamp());
+		
+		GPResponse<Object> output = null;
+
+		try {
+			gpContext.getCashierStrategy(operation.getOperation()).excecute(operation);
+		}catch(APIException apiException) {
+			log.error("[ERROR] excecute APIException. Code: "+apiException.getCode()+", message: "+apiException.getMessage()+".");
+			output = generateGPResponse(apiException.getCode(), apiException.getMessage(), null);
+		}
+		
+		log.info("[INFO] method login with uuid :"+operation.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());
+		return output;
+	}
 }

@@ -54,6 +54,7 @@ Personal interview
 ► Add Interface for Service 
 ► Add Business Logic for login User and custom AccessToken
 ► Add Log consumer 
+► Add Strategy design pattern
 
 03/03/2025
 ► Add mongoDB ER schema 

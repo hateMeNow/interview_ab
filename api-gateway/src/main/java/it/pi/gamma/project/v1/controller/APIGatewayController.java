@@ -52,7 +52,6 @@ public class APIGatewayController extends AGPController{
 			log.error("[ERROR] Exception login, code: "+apiException.getCode()+", message: "+apiException.getMessage());
 			response = new GPResponse<Object>(apiException.getCode(), apiException.getMessage());
 		}
-		
 		log.info("[INFO] method login with uuid :"+login.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());
 		return response;
 	}

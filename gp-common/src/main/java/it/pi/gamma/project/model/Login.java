@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class Login extends GPOperation{
+public class Login extends AGPOperation{
 
 	@NotBlank
 	private String email;

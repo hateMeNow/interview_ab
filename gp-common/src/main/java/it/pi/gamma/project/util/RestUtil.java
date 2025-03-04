@@ -10,6 +10,7 @@ import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.entity.StringEntity;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component
 public class RestUtil {
+	
+	private final String CONTENT_TYPE = "Content-type";
 	
 	public <T> T execute(String url, String request, Class<T> returnType) throws ParseException, IOException {
 		
@@ -26,7 +29,7 @@ public class RestUtil {
 
 		HttpPost httpPost = new HttpPost(url);
 
-		httpPost.setHeader("Content-type", "application/json");
+		httpPost.setHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON);
 		
 		StringEntity entity = new StringEntity(request);
 		

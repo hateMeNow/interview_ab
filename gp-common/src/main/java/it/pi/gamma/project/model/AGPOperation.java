@@ -11,7 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class GPOperation extends AGPOperation{
+public abstract class AGPOperation {
 	
-	private EGPOperation operation;
+	private String uuid;
 }
