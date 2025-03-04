@@ -38,7 +38,7 @@ public class APIGatewayService implements IService{
 			output = restUtil.execute(authUrl, Utils.parseObjectToJson(operation), GPResponse.class);
 		} catch (Exception exception) {
 			log.error("[ERROR] Exception execute, cause: "+exception.getCause()+", message: "+exception.getMessage());
-			output = generateGPResponse(authUrl, IAPIException.API_EXCEPTION_CODE_AUTH_COMUNICATION, IAPIException.API_EXCEPTION_MESSAGE_AUTH_COMUNICATION);
+			throw new APIException(IAPIException.API_EXCEPTION_CODE_AUTH_COMUNICATION, IAPIException.API_EXCEPTION_MESSAGE_AUTH_COMUNICATION);
 		} 
 		log.info("[INFO] method login with uuid :"+operation.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());
 		return output;
@@ -55,7 +55,7 @@ public class APIGatewayService implements IService{
 			gpContext.getCashierStrategy(operation.getOperation()).excecute(operation);
 		}catch(APIException apiException) {
 			log.error("[ERROR] excecute APIException. Code: "+apiException.getCode()+", message: "+apiException.getMessage()+".");
-			output = generateGPResponse(apiException.getCode(), apiException.getMessage(), null);
+			throw new APIException(IAPIException.API_EXCEPTION_CODE_AUTH_COMUNICATION, IAPIException.API_EXCEPTION_MESSAGE_AUTH_COMUNICATION);
 		}
 		
 		log.info("[INFO] method login with uuid :"+operation.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());

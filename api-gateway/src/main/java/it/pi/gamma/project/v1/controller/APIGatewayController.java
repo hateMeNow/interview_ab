@@ -65,10 +65,16 @@ public class APIGatewayController extends AGPController{
 	    content = @Content(mediaType = "application/json", 
 	    schema = @Schema(implementation = GPResponse.class)))})
 	@PostMapping("/operation")
-	public void operation(@RequestBody GPOperation operation) {
+	public GPResponse<Object> operation(@RequestBody GPOperation operation) throws APIException {
 		operation.setUuid(getUuid());
 		log.info("[INFO] Entering method: operation. Params [operation: "+operation+"]. Start at: "+Utils.getCurrentTimeStamp());
+
+		GPResponse<Object> output = null;
+			
+		output = apiGatewayService.operation(operation);
 		
-		log.info("[INFO] method operation uuid: "+operation.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());
+		log.info("[INFO] method operation uuid: "+operation.getUuid()+". Finish at: "+Utils.getCurrentTimeStamp());
+		
+		return output;
 	}
 }
