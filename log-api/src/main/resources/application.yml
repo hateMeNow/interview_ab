@@ -1,0 +1,32 @@
+application:
+  version: 1.0.0-SNAPSHOT
+  date: 04.03.2025
+  application-code: 9187
+
+#spring:
+  #data:
+    #mongodb:
+      #uri: mongodb://
+      #database:
+
+bootstrap:
+  servers: server-url:8080
+  acks: all
+  retries: 0
+  batch:
+    size: 16384
+  linger:
+    ms: 1
+  buffer:
+    memory: 33554432
+  key:
+    serializer: org.apache.kafka.common.serialization.StringSerializer
+  value:
+    serializer: org.apache.kafka.common.serialization.StringSerializer
+
+ssl:
+  keystore:
+    location:
+    password:
+  key:
+    password:

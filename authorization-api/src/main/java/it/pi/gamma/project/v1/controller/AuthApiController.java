@@ -1,5 +1,6 @@
 package it.pi.gamma.project.v1.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import it.pi.gamma.project.model.GPOperation;
 import it.pi.gamma.project.model.GPResponse;
 import it.pi.gamma.project.model.Login;
 import it.pi.gamma.project.util.Utils;
+import it.pi.gamma.project.v1.service.AuthAPIService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -25,6 +27,9 @@ import lombok.extern.slf4j.Slf4j;
 @Tag(name = "Gamma Project Authentication API")
 @RequestMapping("/auth-api/v1")
 public class AuthApiController extends AGPController{
+	
+	@Autowired
+	private AuthAPIService authAPIService;
 
 	@Operation(summary = "Login phase", description = "Check customer login")
 	@ApiResponses(value = { 
@@ -39,8 +44,11 @@ public class AuthApiController extends AGPController{
 		login.setUuid(getUuid());
 		log.info("[INFO] Entering method: login. Params [login: "+login+", uuid: "+login.getUuid()+"]. Start at: "+Utils.getCurrentTimeStamp());
 		
+		GPResponse<Object> response = authAPIService.login(login);
+		
 		log.info("[INFO] method login with uuid :"+login.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());
-		return null;
+		
+		return response;
 	}
 
 	@Operation(summary = "Integration phase", description = "Operation for Gamma Platform ")

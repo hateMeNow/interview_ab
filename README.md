@@ -49,6 +49,12 @@ Personal interview
 #
 ##################
 
+04/02/2025
+► Add User, Tenant and repository
+► Add Interface for Service 
+► Add Business Logic for login User and custom AccessToken
+► Add Log consumer 
+
 03/03/2025
 ► Add mongoDB ER schema 
 ► Update App-Diagram and mongoDB

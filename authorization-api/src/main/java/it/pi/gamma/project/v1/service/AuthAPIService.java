@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class AuthAPIService<T> implements IService{
+public class AuthAPIService implements IService{
 
 	@Autowired
 	private UserRepository userRepository;

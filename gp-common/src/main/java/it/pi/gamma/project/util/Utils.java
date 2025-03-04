@@ -1,8 +1,11 @@
 package it.pi.gamma.project.util;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.UUID;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Utils {
 	
@@ -10,8 +13,7 @@ public class Utils {
 	
 	public static final String DATE_FORMAT_YYYY_MM_DD_WITH_SSS = "yyyy-MM-dd HH:mm:ss.SSS";
 	
-	public static String getTimeStamp() 
-	{	
+	public static String getTimeStamp(){	
 		return String.valueOf(Calendar.getInstance().getTimeInMillis());
 	}
 
@@ -28,8 +30,14 @@ public class Utils {
     }
     
 	public static String queueCode(String applicationCode, String code) {
-		
 		return applicationCode+DASH+code;
 	}
-    
+	
+    public static <T> T parseJsonToString(String json, Class<T> input) throws IOException {
+    	
+    	ObjectMapper objectMapper = new ObjectMapper();
+      	
+    	return objectMapper.readValue(json, input);	
+    }
+
 }
