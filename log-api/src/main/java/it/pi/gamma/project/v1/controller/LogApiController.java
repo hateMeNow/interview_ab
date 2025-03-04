@@ -30,7 +30,7 @@ public class LogApiController extends AGPController{
 		
 		GPLogEvent logEvent = null;
 		try {
-			logEvent = Utils.parseJsonToString(message, GPLogEvent.class);
+			logEvent = Utils.parseJsonToObject(message, GPLogEvent.class);
 			logAPIService.writeLog(logEvent);
 		} catch (IOException ioException) {
 			log.error("[ERROR] method: parseJsonToString. Exception: IOException. Cause: "+ioException.getCause()+", message: "+ioException.getMessage());

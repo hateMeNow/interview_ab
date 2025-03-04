@@ -29,5 +29,9 @@
 	  <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 	  <version>${swagger.version}</version>
 	</dependency>		
+	<dependency>
+        <groupId>org.apache.httpcomponents.client5</groupId>
+        <artifactId>httpclient5</artifactId>
+    </dependency>
   </dependencies>
 </project>

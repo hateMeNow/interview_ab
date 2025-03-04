@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.UUID;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Utils {
@@ -33,7 +34,15 @@ public class Utils {
 		return applicationCode+DASH+code;
 	}
 	
-    public static <T> T parseJsonToString(String json, Class<T> input) throws IOException {
+    public static String parseObjectToJson(Object input) throws JsonProcessingException {
+    	
+    	ObjectMapper objectMapper = new ObjectMapper();
+    	
+    	return objectMapper.writeValueAsString(input);
+    	
+    }
+	
+    public static <T> T parseJsonToObject(String json, Class<T> input) throws IOException {
     	
     	ObjectMapper objectMapper = new ObjectMapper();
       	
