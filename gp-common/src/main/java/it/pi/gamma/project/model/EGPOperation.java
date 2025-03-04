@@ -3,7 +3,7 @@ package it.pi.gamma.project.model;
 import java.util.stream.Stream;
 
 import it.pi.gamma.project.exception.APIException;
-import it.pi.gamma.project.exception.constant.IAPIException;
+import it.pi.gamma.project.exception.constant.api.IAPIException;
 
 public enum EGPOperation {
 

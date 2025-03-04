@@ -9,14 +9,14 @@ import lombok.Setter;
 public class Login extends GPOperation{
 
 	@NotBlank
-	private String username;
+	private String email;
 	
 	@NotBlank
 	private String password;
 
 	@Override
 	public String toString() {
-		return "Login [username=" + username + ", password= *********]";
+		return "Login [email=" + email + ", password= *********]";
 	}
 	
 }

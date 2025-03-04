@@ -19,6 +19,10 @@ public class Utils {
         return new SimpleDateFormat(DATE_FORMAT_YYYY_MM_DD_WITH_SSS).format(Calendar.getInstance().getTime());
     }
 
+    public static void generateCustomAccessToken(String accessToken, String username) {
+    	accessToken =  username+UUID.randomUUID().toString();
+    }
+    
     public static String uuidTransaction() {
     	return UUID.randomUUID().toString();
     }
