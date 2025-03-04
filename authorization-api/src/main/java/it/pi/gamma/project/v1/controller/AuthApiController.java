@@ -14,7 +14,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import it.pi.gamma.project.constant.GPConstant;
 import it.pi.gamma.project.cotroller.AGPController;
+import it.pi.gamma.project.exception.AuthException;
 import it.pi.gamma.project.model.GPOperation;
 import it.pi.gamma.project.model.GPResponse;
 import it.pi.gamma.project.model.Login;
@@ -44,10 +46,15 @@ public class AuthApiController extends AGPController{
 		login.setUuid(getUuid());
 		log.info("[INFO] Entering method: login. Params [login: "+login+", uuid: "+login.getUuid()+"]. Start at: "+Utils.getCurrentTimeStamp());
 		
-		GPResponse<Object> response = authAPIService.login(login);
+		GPResponse<Object> response = null;
 		
+		try {
+			response = authAPIService.login(login);
+		}catch(AuthException autException) {
+			log.error("[ERROR] Exception login, code: "+autException.getCode()+", message: "+autException.getMessage());
+			response = new GPResponse<Object>(autException.getCode(), autException.getMessage());
+		}
 		log.info("[INFO] method login with uuid :"+login.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());
-		
 		return response;
 	}
 

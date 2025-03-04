@@ -23,7 +23,7 @@ public class AuthAPIService implements IService{
 	@Autowired
 	private UserRepository userRepository;
 	
-	public GPResponse<Object> login(Login login){
+	public GPResponse<Object> login(Login login) throws AuthException{
 		log.info("[INFO] Entering method: login. Params [login: "+login+", uuid: "+login.getUuid()+"]. Start at: "+Utils.getCurrentTimeStamp());
 
 		Optional<User> optionalUser =  userRepository.findByEmailAndPassword(login.getEmail(), login.getPassword());
