@@ -9,6 +9,7 @@ import it.pi.gamma.project.exception.APIException;
 import it.pi.gamma.project.exception.constant.api.IAPIException;
 import it.pi.gamma.project.model.GPOperation;
 import it.pi.gamma.project.model.GPResponse;
+import it.pi.gamma.project.model.Header;
 import it.pi.gamma.project.util.RestUtil;
 import it.pi.gamma.project.util.Utils;
 import lombok.extern.slf4j.Slf4j;
@@ -24,12 +25,12 @@ public class IntegrateStrategy implements IGammaPlatformStrategy{
 	private RestUtil restUtil;
 	
 	@Override
-	public GPResponse<Object> excecute(GPOperation gpOperation) throws APIException{
+	public GPResponse<Object> excecute(Header header, GPOperation gpOperation) throws APIException{
 		log.info("[INFO] Entering method: excecute. Params [uuid: "+gpOperation.getUuid()+" ]. Start at: "+Utils.getCurrentTimeStamp());
 	
 		GPResponse<Object> output = null;
 		try {
-			output = restUtil.execute(authUrl, Utils.parseObjectToJson(gpOperation), GPResponse.class);
+			output = restUtil.execute(authUrl, Utils.parseObjectToJson(gpOperation), null, GPResponse.class);
 		} catch (Exception exception) {
 			log.error("[ERROR] Exception execute, cause: "+exception.getCause()+", message: "+exception.getMessage());
 			throw new APIException(IAPIException.API_EXCEPTION_CODE_AUTH_COMUNICATION, IAPIException.API_EXCEPTION_MESSAGE_AUTH_COMUNICATION);

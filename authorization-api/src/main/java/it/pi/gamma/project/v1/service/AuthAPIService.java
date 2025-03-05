@@ -58,7 +58,7 @@ public class AuthAPIService implements IService{
 		String redirectURL = null;
 		
 		try {
-			redirectURL = restUtil.execute(identityProviderUrl + clientId, null, String.class);
+			redirectURL = restUtil.execute(identityProviderUrl + clientId, null, null, String.class);
 		} catch (Exception exception) {
 			log.error("[ERROR] Exception execute, cause: "+exception.getCause()+", message: "+exception.getMessage());
 			throw new AuthException(IAuthException.AUTH_EXCEPTION_CODE_INTEGRATION_ERROR, IAuthException.AUTH_EXCEPTION_MESSAGE_INTEGRATION_ERROR);

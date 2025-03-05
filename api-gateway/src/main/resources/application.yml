@@ -13,4 +13,13 @@ gamma:
     message-url:
     sign-url:
     login-url:
-  
+
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: server-url:8080
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    template:
+      message-topic: message-topic
+      log-topic: log-topic

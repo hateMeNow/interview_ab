@@ -51,7 +51,7 @@ public class APIGatewayController extends AGPController{
 
 		GPResponse<Object> response = null;
 		try {
-			apiGatewayService.login(login);
+			response = apiGatewayService.login(login);
 		}catch(APIException apiException) {
 			log.error("[ERROR] Exception login, code: "+apiException.getCode()+", message: "+apiException.getMessage());
 			response = new GPResponse<Object>(apiException.getCode(), apiException.getMessage());
@@ -74,13 +74,13 @@ public class APIGatewayController extends AGPController{
 			   consumes = MediaType.APPLICATION_JSON_VALUE,
 			   produces = MediaType.APPLICATION_JSON_VALUE
 			   )
-	public GPResponse<Object> operation(@RequestBody GPOperation operation) throws APIException {
+	public GPResponse<Object> operation(@RequestBody GPOperation operation, Header header) throws APIException {
 		operation.setUuid(getUuid());
 		log.info("[INFO] Entering method: operation. Params [operation: "+operation+"]. Start at: "+Utils.getCurrentTimeStamp());
 
 		GPResponse<Object> output = null;
 			
-		output = apiGatewayService.operation(operation);
+		output = apiGatewayService.operation(header, operation);
 		
 		log.info("[INFO] method operation uuid: "+operation.getUuid()+". Finish at: "+Utils.getCurrentTimeStamp());
 		

@@ -52,6 +52,7 @@ Personal interview
 05/03/2025
 ► Add exception for API Strategy desing pattern
 ► Add Provider Identity
+► Integration producer for login-topic
 
 04/02/2025
 ► Add User, Tenant and repository

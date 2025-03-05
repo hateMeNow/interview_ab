@@ -4,7 +4,11 @@ public interface IAPIMessageException {
 
 	public final String API_EXCEPTION_MESSAGE_OPERATION_NOT_AVAILABLE = "Method not available";
 	
+	public final String API_EXCEPTION_MESSAGE_AUTHORIZATION_EXCEPTION = "User not authorized";
+	
 	public final String API_EXCEPTION_MESSAGE_AUTH_COMUNICATION = "Authentication comunication exception";
 	
-	public final String API_EXCEPTION_MESSAGE_AUTH_STRATEGY_CONTEXT = "GPAPI031";
+	public final String API_EXCEPTION_MESSAGE_AUTH_STRATEGY_CONTEXT = "Strategy not found";
+	
+	public final String API_EXCEPTION_MESSAGE_LOG_TOPIC_ERROR = "Exception call Log-topic";
 }
