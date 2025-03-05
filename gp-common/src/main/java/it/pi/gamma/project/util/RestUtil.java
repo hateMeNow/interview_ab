@@ -31,10 +31,15 @@ public class RestUtil {
 
 		httpPost.setHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON);
 		
-		StringEntity entity = new StringEntity(request);
-		
-		httpPost.setEntity(entity);
-		
+		if(
+				request != null 
+					&& 
+				request.isBlank()
+		) {
+			StringEntity entity = new StringEntity(request);	
+			httpPost.setEntity(entity);
+		}
+
 		CloseableHttpResponse httpResponse = httpClient.execute(httpPost);
 
 		HttpEntity responseEntity = httpResponse.getEntity();

@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class IntegrateStrategy implements IGammaPlatformStrategy{
+public class ValidationStrategy implements IGammaPlatformStrategy{
 
 	@Value("${gamma.platform.authentication-url}")
 	private String authUrl;

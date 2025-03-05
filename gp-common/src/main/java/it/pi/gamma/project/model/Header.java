@@ -2,5 +2,8 @@ package it.pi.gamma.project.model;
 
 public class Header {
 
-	public static final String X_FORWARDED_FOR = "X-FORWARDED-FOR";
+	public interface X_GP_ACCESS_TOKEN 		{ String headerName = "X-GP-Access-Token";}
+	
+	
+	
 }

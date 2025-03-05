@@ -49,6 +49,10 @@ Personal interview
 #
 ##################
 
+05/03/2025
+► Add exception for API Strategy desing pattern
+► Add Provider Identity
+
 04/02/2025
 ► Add User, Tenant and repository
 ► Add Interface for Service 

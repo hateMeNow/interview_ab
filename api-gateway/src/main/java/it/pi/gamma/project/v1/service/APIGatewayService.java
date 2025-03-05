@@ -50,9 +50,9 @@ public class APIGatewayService implements IService{
 		log.info("[INFO] Entering method: login. Params [operation: "+operation+"]. Start at: "+Utils.getCurrentTimeStamp());
 		
 		GPResponse<Object> output = null;
-
+		
 		try {
-			gpContext.getCashierStrategy(operation.getOperation()).excecute(operation);
+			output = gpContext.getGammaPlatformStrategy(operation.getOperation()).excecute(operation);
 		}catch(APIException apiException) {
 			log.error("[ERROR] excecute APIException. Code: "+apiException.getCode()+", message: "+apiException.getMessage()+".");
 			throw new APIException(IAPIException.API_EXCEPTION_CODE_AUTH_COMUNICATION, IAPIException.API_EXCEPTION_MESSAGE_AUTH_COMUNICATION);

@@ -9,7 +9,8 @@ public enum EGPOperation {
 
     LOGIN("01", "LOGIN_PHASE"),
     AUTHENTICATION("11", "AUTHENTICATION_PHASE"),
-	INTEGRATION("12", "INTEGRATION_PHASE");
+	INTEGRATION("12", "INTEGRATION_PHASE"),
+	VALIDATION("91", "VALIDATION_PHASE");
 
     private String code;
     private String description;

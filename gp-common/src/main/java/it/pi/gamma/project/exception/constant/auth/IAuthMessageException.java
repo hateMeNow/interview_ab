@@ -4,4 +4,5 @@ public interface IAuthMessageException {
 
 	public final String AUTH_EXCEPTION_MESSAGE_USER_NOT_FOUND = "User not found";
 	
+	public final String AUTH_EXCEPTION_MESSAGE_INTEGRATION_ERROR = "Integration error";
 }
