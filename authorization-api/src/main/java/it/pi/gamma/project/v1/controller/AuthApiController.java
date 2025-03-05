@@ -67,7 +67,7 @@ public class AuthApiController extends AGPController{
 	    schema = @Schema(implementation = GPResponse.class)))})
 	@PostMapping("/integration")
 	public void integration(@RequestBody GPOperation operation) {
-		operation.setUuid(getUuid());
+		
 		log.info("[INFO] Entering method: integration. Params [operation: "+operation+"]. Start at: "+Utils.getCurrentTimeStamp());
 		
 		log.info("[INFO] method operation uuid: "+operation.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());
