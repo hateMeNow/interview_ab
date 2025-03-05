@@ -42,6 +42,10 @@
       <groupId>it.pi.gamma.project</groupId>
       <artifactId>gp-common</artifactId>
       <version>0.0.1-SNAPSHOT</version>
-    </dependency>			
+    </dependency>	
+    <dependency>
+        <groupId>org.springframework.kafka</groupId>
+        <artifactId>spring-kafka</artifactId>
+	</dependency>		
   </dependencies>
 </project>

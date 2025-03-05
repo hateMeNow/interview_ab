@@ -16,10 +16,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class IntegrateStrategy implements IGammaPlatformStrategy{
+public class ReadMessageStrategy implements IGammaPlatformStrategy{
 
-	@Value("${gamma.platform.authentication-url}")
-	private String authUrl;
+	@Value("${gamma.platform.message-url}")
+	private String messageUrl;
+	
+	@Autowired
+	private ValidationStrategy validationStategy;
 	
 	@Autowired
 	private RestUtil restUtil;
@@ -29,13 +32,15 @@ public class IntegrateStrategy implements IGammaPlatformStrategy{
 		log.info("[INFO] Entering method: excecute. Params [uuid: "+gpOperation.getUuid()+" ]. Start at: "+Utils.getCurrentTimeStamp());
 	
 		GPResponse<Object> output = null;
+		
+		GPResponse<Object> validationResponse = validationStategy.excecute(header, gpOperation);
+
 		try {
-			output = restUtil.execute(authUrl, Utils.parseObjectToJson(gpOperation), null, GPResponse.class);
+			output = restUtil.execute(messageUrl, Utils.parseObjectToJson(gpOperation), header, GPResponse.class);
 		} catch (Exception exception) {
 			log.error("[ERROR] Exception execute, cause: "+exception.getCause()+", message: "+exception.getMessage());
 			throw new APIException(IAPIException.API_EXCEPTION_CODE_AUTH_COMUNICATION, IAPIException.API_EXCEPTION_MESSAGE_AUTH_COMUNICATION);
 		} 
-		
 		log.info("[INFO] Entering method: excecute. Params [uuid: "+gpOperation.getUuid()+" ]. Finish at: "+Utils.getCurrentTimeStamp());
 		return output;
 	}

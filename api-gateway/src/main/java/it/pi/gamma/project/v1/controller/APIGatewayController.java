@@ -1,6 +1,7 @@
 package it.pi.gamma.project.v1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import it.pi.gamma.project.cotroller.AGPController;
 import it.pi.gamma.project.exception.APIException;
 import it.pi.gamma.project.model.GPOperation;
 import it.pi.gamma.project.model.GPResponse;
+import it.pi.gamma.project.model.Header;
 import it.pi.gamma.project.model.Login;
 import it.pi.gamma.project.util.Utils;
 import it.pi.gamma.project.v1.service.APIGatewayService;
@@ -40,14 +42,16 @@ public class APIGatewayController extends AGPController{
 	  @ApiResponse(responseCode = "400", description = "Invalid", 
 	    content = @Content(mediaType = "application/json", 
 	    schema = @Schema(implementation = GPResponse.class)))})
-	@GetMapping("/login")
+	@GetMapping(value = "/login", 
+			   consumes = MediaType.APPLICATION_JSON_VALUE,
+			   produces = MediaType.APPLICATION_JSON_VALUE)
 	public GPResponse<Object> login(@Validated Login login) {
 		login.setUuid(getUuid());
 		log.info("[INFO] Entering method: login. Params [login: "+login+", uuid: "+login.getUuid()+"]. Start at: "+Utils.getCurrentTimeStamp());
 
 		GPResponse<Object> response = null;
 		try {
-			apiGatewayService.login(login);
+			response = apiGatewayService.login(login);
 		}catch(APIException apiException) {
 			log.error("[ERROR] Exception login, code: "+apiException.getCode()+", message: "+apiException.getMessage());
 			response = new GPResponse<Object>(apiException.getCode(), apiException.getMessage());
@@ -64,14 +68,19 @@ public class APIGatewayController extends AGPController{
 	  @ApiResponse(responseCode = "400", description = "Invalid", 
 	    content = @Content(mediaType = "application/json", 
 	    schema = @Schema(implementation = GPResponse.class)))})
-	@PostMapping("/operation")
-	public GPResponse<Object> operation(@RequestBody GPOperation operation) throws APIException {
+	@PostMapping(
+			   value = "/operation", 
+	           headers = {Header.X_GP_ACCESS_TOKEN.headerName}, 
+			   consumes = MediaType.APPLICATION_JSON_VALUE,
+			   produces = MediaType.APPLICATION_JSON_VALUE
+			   )
+	public GPResponse<Object> operation(@RequestBody GPOperation operation, Header header) throws APIException {
 		operation.setUuid(getUuid());
 		log.info("[INFO] Entering method: operation. Params [operation: "+operation+"]. Start at: "+Utils.getCurrentTimeStamp());
 
 		GPResponse<Object> output = null;
 			
-		output = apiGatewayService.operation(operation);
+		output = apiGatewayService.operation(header, operation);
 		
 		log.info("[INFO] method operation uuid: "+operation.getUuid()+". Finish at: "+Utils.getCurrentTimeStamp());
 		

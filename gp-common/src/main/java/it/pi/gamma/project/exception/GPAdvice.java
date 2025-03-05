@@ -23,4 +23,11 @@ public class GPAdvice {
     	GPResponse<String> cashierResponse = new GPResponse<String>(Utils.queueCode(applicationCode, apiException.getCode()), apiException.getMessage());
         return new ResponseEntity<>(cashierResponse, HttpStatus.NOT_ACCEPTABLE);
     }
+    
+    @ExceptionHandler(AuthException.class)
+    public ResponseEntity<GPResponse<String>> handleGPException(AuthException apiException) {
+    	log.debug("[DEBUG] handle AdviceException");
+    	GPResponse<String> cashierResponse = new GPResponse<String>(Utils.queueCode(applicationCode, apiException.getCode()), apiException.getMessage());
+        return new ResponseEntity<>(cashierResponse, HttpStatus.NOT_ACCEPTABLE);
+    }
 }

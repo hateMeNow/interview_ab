@@ -3,8 +3,9 @@ application:
   date: 03.03.2025
   application-code: 2187
   
-server:
-  servlet:
-    contextPath: /auth-api
+gamma:
+  platform:
+    identity-provider-url: http//provider-test/authorize?clientid=
+  client-id: 6e255689-736c-4db0-a39a-b5efc51b0739
 
   

@@ -13,6 +13,7 @@ import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
+import it.pi.gamma.project.model.Header;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -21,7 +22,7 @@ public class RestUtil {
 	
 	private final String CONTENT_TYPE = "Content-type";
 	
-	public <T> T execute(String url, String request, Class<T> returnType) throws ParseException, IOException {
+	public <T> T execute(String url, String request, Header header, Class<T> returnType) throws ParseException, IOException {
 		
 		log.info("[INFO] Entering method: execute. Params [url: "+url+" ]");
 		
@@ -31,10 +32,17 @@ public class RestUtil {
 
 		httpPost.setHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON);
 		
-		StringEntity entity = new StringEntity(request);
-		
-		httpPost.setEntity(entity);
-		
+		if(
+				request != null 
+					&& 
+				request.isBlank()
+		) {
+			StringEntity entity = new StringEntity(request);	
+			httpPost.setEntity(entity);
+		}
+		if( header != null )
+			httpPost.addHeader(Header.X_GP_ACCESS_TOKEN.headerName, header.getAccessToken());
+
 		CloseableHttpResponse httpResponse = httpClient.execute(httpPost);
 
 		HttpEntity responseEntity = httpResponse.getEntity();
