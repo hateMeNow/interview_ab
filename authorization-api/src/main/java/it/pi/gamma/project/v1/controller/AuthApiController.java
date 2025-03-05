@@ -1,6 +1,7 @@
 package it.pi.gamma.project.v1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import it.pi.gamma.project.cotroller.AGPController;
 import it.pi.gamma.project.exception.AuthException;
 import it.pi.gamma.project.model.GPOperation;
 import it.pi.gamma.project.model.GPResponse;
+import it.pi.gamma.project.model.Header;
 import it.pi.gamma.project.model.Login;
 import it.pi.gamma.project.util.Utils;
 import it.pi.gamma.project.v1.service.AuthAPIService;
@@ -40,7 +42,9 @@ public class AuthApiController extends AGPController{
 	  @ApiResponse(responseCode = "400", description = "Invalid", 
 	    content = @Content(mediaType = "application/json", 
 	    schema = @Schema(implementation = GPResponse.class)))})
-	@GetMapping("/login")
+	@GetMapping(value = "/login", 
+			   consumes = MediaType.APPLICATION_JSON_VALUE,
+			   produces = MediaType.APPLICATION_JSON_VALUE)
 	public GPResponse<Object> login(@Validated Login login) {
 		login.setUuid(getUuid());
 		log.info("[INFO] Entering method: login. Params [login: "+login+", uuid: "+login.getUuid()+"]. Start at: "+Utils.getCurrentTimeStamp());
@@ -57,7 +61,7 @@ public class AuthApiController extends AGPController{
 		return response;
 	}
 
-	@Operation(summary = "Integration phase", description = "Operation for Gamma Platform ")
+	@Operation(summary = "Integration phase", description = "Integration for Gamma Platform ")
 	@ApiResponses(value = { 
 	  @ApiResponse(responseCode = "200", description = "Operation success completed", 
 	    content = { @Content(mediaType = "application/json", 
@@ -65,11 +69,44 @@ public class AuthApiController extends AGPController{
 	  @ApiResponse(responseCode = "400", description = "Invalid", 
 	    content = @Content(mediaType = "application/json", 
 	    schema = @Schema(implementation = GPResponse.class)))})
-	@PostMapping("/integration")
-	public void integration(@RequestBody GPOperation operation) {
+	@PostMapping(value = "/integration", 
+			   consumes = MediaType.APPLICATION_JSON_VALUE,
+			   produces = MediaType.APPLICATION_JSON_VALUE)
+	public GPResponse<Object> integration(@RequestBody GPOperation operation) {
 		
 		log.info("[INFO] Entering method: integration. Params [operation: "+operation+"]. Start at: "+Utils.getCurrentTimeStamp());
 		
+		GPResponse<Object> response = null;
+		
+		response = authAPIService.integration(operation);
+		
 		log.info("[INFO] method operation uuid: "+operation.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());
+		
+		return response;
+	}
+	
+	
+	@Operation(summary = "validation phase", description = "Validation for Gamma Platform ")
+	@ApiResponses(value = { 
+	  @ApiResponse(responseCode = "200", description = "Operation success completed", 
+	    content = { @Content(mediaType = "application/json", 
+	    schema = @Schema(implementation = GPResponse.class)) }),
+	  @ApiResponse(responseCode = "400", description = "Invalid", 
+	    content = @Content(mediaType = "application/json", 
+	    schema = @Schema(implementation = GPResponse.class)))})
+	@PostMapping(value = "/validation", headers = {Header.X_GP_ACCESS_TOKEN.headerName}, 
+			   consumes = MediaType.APPLICATION_JSON_VALUE,
+			   produces = MediaType.APPLICATION_JSON_VALUE)
+	public GPResponse<Object> validation(@RequestBody GPOperation operation) {
+		
+		log.info("[INFO] Entering method: validation. Params [operation: "+operation+"]. Start at: "+Utils.getCurrentTimeStamp());
+		
+		GPResponse<Object> response = null;
+		
+		response = authAPIService.validation(operation);
+		
+		log.info("[INFO] method operation uuid: "+operation.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());
+		
+		return response;
 	}
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import it.pi.gamma.project.ds.strategy.IGammaPlatformStrategy;
 import it.pi.gamma.project.ds.strategy.concrete.IntegrateStrategy;
+import it.pi.gamma.project.ds.strategy.concrete.ValidationStrategy;
 import it.pi.gamma.project.exception.APIException;
 import it.pi.gamma.project.exception.constant.api.IAPIException;
 import it.pi.gamma.project.model.EGPOperation;
@@ -18,6 +19,9 @@ public class GPContext {
 	
 	@Autowired
 	private IntegrateStrategy integrateStrategy;
+	
+	@Autowired
+	private ValidationStrategy validationStrategy;
 
 	private IGammaPlatformStrategy iGammaPlatformStrategy;
 	
@@ -25,6 +29,9 @@ public class GPContext {
 		
 		if( EGPOperation.INTEGRATION.getCode().equalsIgnoreCase(operation.getCode())) 
 			return integrateStrategy;
+		
+		if( EGPOperation.VALIDATION.getCode().equalsIgnoreCase(operation.getCode())) 
+			return validationStrategy;
 
 		throw new APIException(IAPIException.API_EXCEPTION_CODE_AUTH_STRATEGY_CONTEXT, IAPIException.API_EXCEPTION_MESSAGE_AUTH_STRATEGY_CONTEXT);
 	}

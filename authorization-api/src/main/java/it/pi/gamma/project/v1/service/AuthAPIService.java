@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import it.pi.gamma.project.constant.GPConstant;
-import it.pi.gamma.project.exception.APIException;
 import it.pi.gamma.project.exception.AuthException;
-import it.pi.gamma.project.exception.constant.api.IAPIException;
 import it.pi.gamma.project.exception.constant.auth.IAuthException;
 import it.pi.gamma.project.model.GPOperation;
 import it.pi.gamma.project.model.GPResponse;
@@ -64,10 +62,29 @@ public class AuthAPIService implements IService{
 		} catch (Exception exception) {
 			log.error("[ERROR] Exception execute, cause: "+exception.getCause()+", message: "+exception.getMessage());
 			throw new AuthException(IAuthException.AUTH_EXCEPTION_CODE_INTEGRATION_ERROR, IAuthException.AUTH_EXCEPTION_MESSAGE_INTEGRATION_ERROR);
-		} 
+		}
 		GPResponse<Object> output = generateGPResponse(GPConstant.SUCCESS_CODE, GPConstant.SUCCESS_MESSAGE, redirectURL);
 		
 		log.info("[INFO] method integration with uuid :"+operation.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());
+		
+		return output;
+	}
+	
+	public GPResponse<Object> validation(GPOperation operation) throws AuthException{
+		log.info("[INFO] Entering method: validation. Params [operation: "+operation+"]. Start at: "+Utils.getCurrentTimeStamp());
+		
+		String redirectURL = null;
+		
+		try {
+			// TODO Inserimento validazione provider 
+//			redirectURL = restUtil.execute(, null, String.class);
+		} catch (Exception exception) {
+			log.error("[ERROR] Exception execute, cause: "+exception.getCause()+", message: "+exception.getMessage());
+			throw new AuthException(IAuthException.AUTH_EXCEPTION_CODE_INTEGRATION_ERROR, IAuthException.AUTH_EXCEPTION_MESSAGE_INTEGRATION_ERROR);
+		}
+		GPResponse<Object> output = generateGPResponse(GPConstant.SUCCESS_CODE, GPConstant.SUCCESS_MESSAGE, redirectURL);
+		
+		log.info("[INFO] method validation with uuid :"+operation.getUuid()+".Finish at: "+Utils.getCurrentTimeStamp());
 		
 		return output;
 	}
